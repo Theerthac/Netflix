@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:netflix/constants/constants.dart';
 import 'package:netflix/helpers/colors/colors.dart';
 import 'package:netflix/view/widgets/app_bar_widget.dart.dart';
 
@@ -8,9 +9,10 @@ class DownloadScreen extends StatelessWidget {
   DownloadScreen({super.key});
 
   final List imageList = [
-    "https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5379692/portrait/1920x7702258faa42539473682e3515399b0d37173697b003b284ddca66881e4c870c11b.jpg",
+    
     "https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5419208/portrait/1920x7705efec6aea2564e93964b6322ee6de7d8.jpg",
     "https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5351501/portrait/1920x7709e07d3163e0f41328bc9ecb3e0ad54e6.jpg",
+    "https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5379692/portrait/1920x7702258faa42539473682e3515399b0d37173697b003b284ddca66881e4c870c11b.jpg",
   ];
 
   @override
@@ -24,18 +26,20 @@ class DownloadScreen extends StatelessWidget {
             )),
         body: ListView(
           children: [
-            const Row(
-              children: [
-                Icon(
-                  Icons.settings,
-                  color: kwhiteColor,
-                ),
-                Text("Smart Downloads")
-              ],
-            ),
-            const Text("Introducing Downloads for you"),
+           const _SmartDownloads(),
+            const Text("Introducing Downloads for you",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: kwhiteColor,
+            fontSize: 24,
+            fontWeight:FontWeight.bold ),),
+
+            kHeight,
             const Text(
-                "we will download a personalised selection of movies and shows for you, so there is always something to watch on your device"),
+                "we will download a personalised selection of\nmovies and shows for you, so there's\nalways something to watch on your\ndevice",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey,
+                fontSize: 16),
+                ),
             Container(
               width: size.width,
               height: size.width,
@@ -46,7 +50,15 @@ class DownloadScreen extends StatelessWidget {
                   CircleAvatar(
                     radius: size.width * 0.37,
                   ),
-                  DownloadsImgaeWidget(imageList:imageList[0], margin: EdgeInsets.only(left: 20))
+                 
+                  DownloadsImgaeWidget(imageList:imageList[0],
+                   margin: EdgeInsets.only(left: 130),
+                   angle: 20,),
+                   DownloadsImgaeWidget(imageList:imageList[1],
+                   margin: EdgeInsets.only(right: 130),
+                   angle: -20,),
+                   DownloadsImgaeWidget(imageList:imageList[2],
+                   margin: EdgeInsets.only(top: 0))
                 ],
               ),
             ),
@@ -77,6 +89,25 @@ class DownloadScreen extends StatelessWidget {
   }
 }
 
+class _SmartDownloads extends StatelessWidget {
+  const _SmartDownloads({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        Icon(
+          Icons.settings,
+          color: kwhiteColor,
+        ),
+        Text("Smart Downloads")
+      ],
+    );
+  }
+}
+
 class DownloadsImgaeWidget extends StatelessWidget {
   const DownloadsImgaeWidget({
     Key? key,
@@ -100,7 +131,7 @@ class DownloadsImgaeWidget extends StatelessWidget {
         //color: kBlackColor,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(image: NetworkImage(imageList[0]))),
+            image: DecorationImage(image: NetworkImage(imageList))),
       ),
     );
   }
