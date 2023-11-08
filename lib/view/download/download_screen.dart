@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:netflix/constants/constants.dart';
 import 'package:netflix/helpers/colors/colors.dart';
 import 'package:netflix/view/widgets/app_bar_widget.dart.dart';
 
@@ -26,45 +25,58 @@ class DownloadScreen extends StatelessWidget {
             )),
         body: ListView(
           children: [
+            const SizedBox(height: 20,),
            const _SmartDownloads(),
+            const SizedBox(height: 30,),
             const Text("Introducing Downloads for you",
             textAlign: TextAlign.center,
             style: TextStyle(color: kwhiteColor,
             fontSize: 24,
             fontWeight:FontWeight.bold ),),
 
-            kHeight,
+      
             const Text(
                 "we will download a personalised selection of\nmovies and shows for you, so there's\nalways something to watch on your\ndevice",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey,
                 fontSize: 16),
                 ),
-            Container(
+                
+            SizedBox(
               width: size.width,
               height: size.width,
-              color: Colors.white,
+              
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   CircleAvatar(
-                    radius: size.width * 0.37,
+                    radius: size.width * 0.4,
+                    backgroundColor: Colors.grey.withOpacity(0.5),
                   ),
-                 
+                
                   DownloadsImgaeWidget(imageList:imageList[0],
-                   margin: EdgeInsets.only(left: 130),
-                   angle: 20,),
+                   margin: const EdgeInsets.only(left: 130),
+                   angle: 20,
+                  
+                   ),
                    DownloadsImgaeWidget(imageList:imageList[1],
-                   margin: EdgeInsets.only(right: 130),
+                   margin: const EdgeInsets.only(right: 130),
                    angle: -20,),
                    DownloadsImgaeWidget(imageList:imageList[2],
-                   margin: EdgeInsets.only(top: 0))
+                   
+                   margin: const EdgeInsets.only(top: 0),
+                   
+                   )
                 ],
               ),
             ),
+            const SizedBox(height: 40,),
             MaterialButton(
               color: kButtonColorBlue,
               onPressed: () {},
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5)
+              ),
               child: const Text(
                 "Set up",
                 style: TextStyle(
@@ -76,6 +88,9 @@ class DownloadScreen extends StatelessWidget {
             MaterialButton(
               color: kButtonColorWhite,
               onPressed: () {},
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5)
+              ),
               child: const Text(
                 "See what you can download",
                 style: TextStyle(
@@ -102,7 +117,9 @@ class _SmartDownloads extends StatelessWidget {
           Icons.settings,
           color: kwhiteColor,
         ),
-        Text("Smart Downloads")
+        SizedBox(width: 10,
+        ),
+        Text("Smart Downloads",style: TextStyle(fontWeight: FontWeight.bold),)
       ],
     );
   }
@@ -131,7 +148,9 @@ class DownloadsImgaeWidget extends StatelessWidget {
         //color: kBlackColor,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(image: NetworkImage(imageList))),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(imageList))),
       ),
     );
   }
