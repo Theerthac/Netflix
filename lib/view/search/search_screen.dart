@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/constants/constants.dart';
 import 'package:netflix/view/search/widget/search_idle.dart';
+import 'package:netflix/view/search/widget/search_reasult.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -17,14 +18,14 @@ class SearchScreen extends StatelessWidget {
             children: [
               CupertinoSearchTextField(
                 backgroundColor: Colors.grey.withOpacity(0.4),
-                prefixIcon: Icon(CupertinoIcons.search,color: Colors.grey,),
-                suffixIcon: Icon(CupertinoIcons.xmark_circle_fill,color: Colors.grey,),
-                style: TextStyle(color: Colors.white),
+                prefixIcon: const Icon(CupertinoIcons.search,color: Colors.grey,),
+                suffixIcon: const Icon(CupertinoIcons.xmark_circle_fill,color: Colors.grey,),
+                style: const TextStyle(color: Colors.white),
               ),
               kHeight,
               
-             Expanded(child: SearchIdle()),
-              
+            // const Expanded(child: SearchIdle()),
+             const Expanded(child: SearchResult()),
             ],
           ),
         )

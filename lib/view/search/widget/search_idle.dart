@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/constants/constants.dart';
 import 'package:netflix/helpers/colors/colors.dart';
+import 'package:netflix/view/search/widget/searchtitle.dart';
 
 const imageUrl =
     'https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5419208/portrait/1920x7705efec6aea2564e93964b6322ee6de7d8.jpg';
@@ -15,15 +17,12 @@ class SearchIdle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Top Searches',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
+        SearchTextTitle(title: 'Top Searches'),
         kHeight,
         Expanded(
           child: ListView.separated(
             shrinkWrap: true,
-              itemBuilder: (ctx, index) => TopSearchItemTile(),
+              itemBuilder: (ctx, index) => const TopSearchItemTile(),
               separatorBuilder: (ctx, index) => kHeight20,
               itemCount: 10),
         )
@@ -31,6 +30,8 @@ class SearchIdle extends StatelessWidget {
     );
   }
 }
+
+
 
 class TopSearchItemTile extends StatelessWidget {
   const TopSearchItemTile({super.key});
@@ -47,12 +48,22 @@ class TopSearchItemTile extends StatelessWidget {
               image: DecorationImage(
                   fit: BoxFit.cover, image: NetworkImage(imageUrl))),
         ),
-        Expanded(child: Text('Movie Name',
+        const Expanded(child: Text('Movie Name',
         style: TextStyle(
           color: kwhiteColor,
           fontWeight: FontWeight.bold,
           fontSize: 16,
-        ),))
+        ),),
+        ),
+        const CircleAvatar(
+          backgroundColor: kwhiteColor,
+          radius: 25,
+          child: CircleAvatar(
+            backgroundColor: kBlackColor,
+            radius: 23,
+            child: Icon(CupertinoIcons.play_fill,color: kwhiteColor,),
+          ),
+        )
       ],
     );
   }
