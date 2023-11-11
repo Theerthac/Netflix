@@ -10,10 +10,10 @@ class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
   final _pages = [
-    HomeScreen(),
-    NewAndHotScreen(),
-    FastLaughsScreen(),
-    SearchScreen(),
+    const HomeScreen(),
+    const NewAndHotScreen(),
+    const FastLaughsScreen(),
+    const SearchScreen(),
     DownloadScreen()
   ];
 
@@ -28,7 +28,7 @@ class MainScreen extends StatelessWidget {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationWidgets(),
+      bottomNavigationBar: const BottomNavigationWidgets(),
     );
   }
 }
