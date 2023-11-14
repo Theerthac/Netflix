@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     children: [
                       Image.network("https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456",
-                      width: 60,height: 60,
+                      width: 40,height: 40,
                       ),
                       const Spacer(),
                        const Icon(
