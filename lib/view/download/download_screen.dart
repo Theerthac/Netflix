@@ -1,9 +1,9 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:netflix/constants/constants.dart';
 import 'package:netflix/helpers/colors/colors.dart';
 import 'package:netflix/view/widgets/app_bar_widget.dart.dart';
+
 
 class DownloadScreen extends StatelessWidget {
   DownloadScreen({super.key});
@@ -23,9 +23,9 @@ class DownloadScreen extends StatelessWidget {
               title: "Downloads",
             )),
         body: ListView.separated(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           itemBuilder:(ctx,index)=>widgetList[index],
-           separatorBuilder: (ctx,index)=>SizedBox(height: 30,),
+           separatorBuilder: (ctx,index)=>const SizedBox(height: 30,),
             itemCount: widgetList.length)
         );
   }
