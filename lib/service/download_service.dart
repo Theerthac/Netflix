@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:netflix/model/movie_info_model.dart';
 import 'package:netflix/model/tmdb_api_response.dart';
 import 'package:netflix/service/api_endpoints.dart';
-import 'package:netflix/service/api_key.dart';
 
 class DownloadService {
   Future<List<String>> getTrendingMovies() async {

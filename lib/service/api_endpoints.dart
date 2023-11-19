@@ -10,7 +10,7 @@ class ApiendPoint {
       "$kBaseUrl/movie/popular?api_key=$apikey&language=en-US&page=1";
   static const populartv =
       "$kBaseUrl/tv/popular?api_key=$apikey&language=en-US&page=1";
-  static const operatetv =
+  static const topratetv =
       "$kBaseUrl/discover/tv?include_adult=false&language=en-US&page=1&sort_by=vote_average.desc&vote_count.gte=200&api_key=$apikey";
 
 }
