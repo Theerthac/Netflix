@@ -1,59 +1,48 @@
-
 import 'package:flutter/material.dart';
-import 'package:netflix/constants/constants.dart';
-import 'package:netflix/view/home/widgets/custom_button_widget.dart';
+import 'package:netflix/controller/internetconnectivity_provider.dart';
+import 'package:netflix/controller/newandhot_provider.dart';
+import 'package:netflix/view/new_and_hot/widgets/EveryonesWatchingInfo_Card.dart';
+import 'package:provider/provider.dart';
 
-import '../../widgets/video_widget.dart';
 
-class EveryoneWatchingWidget extends StatelessWidget {
+
+class EveryoneWatchingWidget extends StatefulWidget {
   const EveryoneWatchingWidget({
     super.key,
   });
 
   @override
+  State<EveryoneWatchingWidget> createState() => _EveryoneWatchingWidgetState();
+}
+
+class _EveryoneWatchingWidgetState extends State<EveryoneWatchingWidget> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<NewAndHotProvider>(context, listen: false)
+        .fetchEveryoneWatchingMovies();
+    Provider.of<InternetConnectivityProvider>(context, listen: false)
+        .getInternetConnectivity(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        kHeight,
-        Text(
-          "Friends",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        kHeight,
-        Text(
-          "This hit sitcom follows the merry misadventures of six 20-something pals as they navigate the pitfalls of work, life and love in 1990s Manhattan",
-          style: TextStyle(color: Colors.grey),
-        ),
-        kHeight50,
-        VideoWidget(),
-        kHeight,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            CustomButton(
-              icon: Icons.share,
-              title: "Share",
-              iconSize: 23,
-              textSize: 16,
-            ),
-            kWidth,
-            CustomButton(
-              icon: Icons.add,
-              title: "My List",
-              iconSize: 23,
-              textSize: 16,
-            ),
-            kWidth,
-            CustomButton(
-              icon: Icons.play_arrow,
-              title: "Play",
-              iconSize: 23,
-              textSize: 16,
-            ),
-            kWidth,
-          ],
-        )
-      ],
+    return Consumer<NewAndHotProvider>(
+      builder: (context, provider, child) {
+        if (provider.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (provider.moviepopular.isEmpty) {
+          return const Text("No data available");
+        }
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: provider.moviepopular.length,
+          itemBuilder: (context, index) =>
+              EveryoneWatchingInfoCard(movieinfo: provider.moviepopular[index]),
+        );
+      },
     );
   }
 }

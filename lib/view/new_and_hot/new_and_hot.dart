@@ -4,7 +4,6 @@ import 'package:netflix/helpers/colors/colors.dart';
 import 'package:netflix/view/new_and_hot/widgets/coming_soon_widget.dart';
 import 'package:netflix/view/new_and_hot/widgets/everyone_watching_widget.dart';
 
-
 class NewAndHotScreen extends StatelessWidget {
   const NewAndHotScreen({super.key});
 
@@ -27,10 +26,11 @@ class NewAndHotScreen extends StatelessWidget {
                   size: 29,
                 ),
                 kWidth,
-                Container(
+                SizedBox(
                   width: 28,
                   height: 18,
-                  color: Colors.blue,
+                  child: Image.network(
+                      "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"),
                 ),
                 kWidth,
               ],
@@ -53,23 +53,17 @@ class NewAndHotScreen extends StatelessWidget {
             ),
           ),
           body: TabBarView(children: [
-            buildComingSoon(),
+            _buildComingSoon(context),
             buildEveryoneWatching(),
           ])),
     );
   }
+}
 
-  Widget buildComingSoon() {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (BuildContext context, index) => const ComingSoonWidget(),
-    );
-  }
+Widget _buildComingSoon(BuildContext context) {
+  return const ComingSoonWidget();
+}
 
-  Widget buildEveryoneWatching() {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (BuildContext context, index) => const EveryoneWatchingWidget(),
-    );
-  }
+Widget buildEveryoneWatching() {
+  return const EveryoneWatchingWidget();
 }

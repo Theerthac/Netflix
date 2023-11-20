@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/constants/constants.dart';
+import 'package:netflix/controller/homescreen_provider.dart';
 import 'package:netflix/helpers/colors/colors.dart';
 import 'package:netflix/view/home/widgets/custom_button_widget.dart';
+import 'package:provider/provider.dart';
 
-class BackgroundCard extends StatelessWidget {
+class BackgroundCard extends StatefulWidget {
   const BackgroundCard({super.key});
 
   @override
+  State<BackgroundCard> createState() => _BackgroundCardState();
+}
+
+class _BackgroundCardState extends State<BackgroundCard> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<HomeBackgroundCardImageProvider>(context, listen: false)
+        .initialBackgroundCard();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    var imageProvider = Provider.of<HomeBackgroundCardImageProvider>(context);
     return Stack(
       children: [
         Container(
           width: double.infinity,
-          height: 600,
-          decoration: const BoxDecoration(
+          height: size.height * 0.7,
+          decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: NetworkImage(mainImage),
+              image: NetworkImage(imageProvider.imageUrl ?? "Image not found"),
             ),
           ),
         ),
@@ -30,7 +45,7 @@ class BackgroundCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const CustomButton(icon: Icons.add, title: "My List"),
-                PlayButton(),
+                playButton(),
                 const CustomButton(icon: Icons.info, title: "info")
               ],
             ),
@@ -40,8 +55,8 @@ class BackgroundCard extends StatelessWidget {
     );
   }
 
+  TextButton playButton() {
 
-  TextButton PlayButton() {
     return TextButton.icon(
         onPressed: () {},
         style: ButtonStyle(

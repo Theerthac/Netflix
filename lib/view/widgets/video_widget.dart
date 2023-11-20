@@ -5,7 +5,7 @@ import 'package:netflix/helpers/colors/colors.dart';
 
 class VideoWidget extends StatelessWidget {
   const VideoWidget({
-    super.key,
+    super.key, required String videoImage,
   });
 
   @override

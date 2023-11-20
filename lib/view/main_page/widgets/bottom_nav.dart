@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/controller/bottombar_provider.dart';
 import 'package:netflix/helpers/colors/colors.dart';
+import 'package:provider/provider.dart';
 
-ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
+//ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
 
 class BottomNavigationWidgets extends StatelessWidget {
   const BottomNavigationWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: indexChangeNotifier,
-      builder: (context, int newIndex, _) {
+    return Consumer<SelectedIndexProvider>(
+      builder: (context, value, child) {
         return BottomNavigationBar(
-            currentIndex: newIndex,
+            currentIndex: value.selectedIndex,
             onTap: (index) {
-              indexChangeNotifier.value = index;
+              value.setIndex(index);
             },
             elevation: 0,
             type: BottomNavigationBarType.fixed,
