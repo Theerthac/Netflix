@@ -5,6 +5,7 @@ class VideoPlayerProvider extends ChangeNotifier {
   late VideoPlayerController videoPlayerController;
 
 
+  // ignore: non_constant_identifier_names
   VideoPlayerState(String videoUrl) {
     // ignore: non_constant_identifier_names
     late var VideoUrlvar = Uri.parse(videoUrl);

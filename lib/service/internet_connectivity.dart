@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
@@ -19,6 +21,7 @@ class InternetConnectivityServices {
       isDeviceConnected = await InternetConnectionChecker().hasConnection;
 
       if (!isDeviceConnected && isAlertSet == false) {
+       
         showDialogBox(context);
         isAlertSet = true;
       }
@@ -29,8 +32,8 @@ class InternetConnectivityServices {
     showCupertinoDialog(
       context: context,
       builder: (context) => CupertinoAlertDialog(
-        title: Text("No Connection"),
-        content: Text("Please check your internet connectivity"),
+        title: const Text("No Connection"),
+        content: const Text("Please check your internet connectivity"),
         actions: <Widget>[
           TextButton(
               onPressed: () async {
@@ -41,12 +44,13 @@ class InternetConnectivityServices {
                 isDeviceConnected =
                     await InternetConnectionChecker().hasConnection;
                 if (!isDeviceConnected) {
+                 
                   showDialogBox(context);
 
                   isAlertSet = true;
                 }
               },
-              child: Text('OK'))
+              child: const Text('OK'))
         ],
       ),
     );

@@ -6,7 +6,8 @@ class TMDBApiResponseModel {
   TMDBApiResponseModel.fromjson(Map data) {
     results = (data['results'] as List)
         .map((item) => MovieinfoModel.fromjson(item))
-        .where((movieinfo) => movieinfo != null)
+        // ignore: unnecessary_null_comparison
+        .where((movieinfo) => movieinfo != null) 
         .toList();
   }
 
