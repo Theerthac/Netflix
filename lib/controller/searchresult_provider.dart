@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:netflix/model/movie_info_model.dart';
 import 'package:netflix/service/searchresult_service.dart';
 

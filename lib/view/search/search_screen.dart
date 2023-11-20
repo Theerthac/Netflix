@@ -20,7 +20,9 @@ class SearchScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CupertinoSearchTextField(
-    
+               onChanged:(value) {
+                 searchQueryModel.updateQuery(value);
+               }, 
                 backgroundColor: Colors.grey.withOpacity(0.4),
                 prefixIcon: const Icon(CupertinoIcons.search,color: Colors.grey,),
                 suffixIcon: const Icon(CupertinoIcons.xmark_circle_fill,color: Colors.grey,),

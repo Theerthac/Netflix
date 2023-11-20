@@ -9,7 +9,7 @@ class DownloadService {
   Future<List<String>> getTrendingMovies() async {
     try {
       List<String> imageList = [];
-      final response = await http.get(Uri.parse(ApiendPoint.trendingmovies));
+      final response = await http.get(Uri.parse(ApiendPoint.trendingMovies));
       if (response.statusCode == 200) {
         Map<String, dynamic> data =
             jsonDecode(response.body) as Map<String, dynamic>;

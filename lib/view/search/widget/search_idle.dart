@@ -8,8 +8,6 @@ import 'package:netflix/model/movie_info_model.dart';
 import 'package:netflix/view/search/widget/searchtitle.dart';
 import 'package:provider/provider.dart';
 
-//const imageUrl =
-//  'https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5419208/portrait/1920x7705efec6aea2564e93964b6322ee6de7d8.jpg';
 
 class SearchIdle extends StatefulWidget {
   const SearchIdle({
@@ -45,7 +43,7 @@ class _SearchIdleState extends State<SearchIdle> {
                   child: CircularProgressIndicator(),
                 );
               } else if (value.trendingMovies.isEmpty) {
-                return const Text("NO data available");
+                return const Text("No data available");
               }
               return ListView.separated(
                 shrinkWrap: true,

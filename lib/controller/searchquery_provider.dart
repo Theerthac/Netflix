@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 
 class SearchQueryProvider extends ChangeNotifier {
-  String query = '';
+  String query ='';
 
   void updateQuery(String newQuery) {
     query = newQuery;

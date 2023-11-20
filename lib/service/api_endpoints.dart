@@ -2,7 +2,7 @@ import 'package:netflix/constants/string.dart';
 import 'package:netflix/service/api_key.dart';
 
 class ApiendPoint {
-  static const trendingmovies = "$kBaseUrl/trending/all/day?api_key=$apikey";
+  static const trendingMovies = "$kBaseUrl/trending/all/day?api_key=$apikey";
   static const searchmovies = "$kBaseUrl/search/movie?api_key=$apikey&query=";
   static const upcomingmovies =
       "$kBaseUrl/movie/upcoming?api_key=$apikey&language=en-US&page=1";

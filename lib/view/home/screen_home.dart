@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   kHeight,
                   HomeTitleCard(
                     title: "Trending Now",
-                    apiUrl: ApiendPoint.trendingmovies,
+                    apiUrl: ApiendPoint.trendingMovies,
                   ),
                   kHeight,
                   NumberTitleCard(),

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/model/movie_info_model.dart';
@@ -26,7 +25,7 @@ class SearchResultService {
               actions: <Widget>[
                 CupertinoDialogAction(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SearchScreen(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const SearchScreen())); 
                   },
                   child: const Text('OK'),
                   )
@@ -57,6 +56,7 @@ class SearchResultService {
           );
         },
         );
-    }return searchResultMovies;
+    }
+    return searchResultMovies;
   }
 }

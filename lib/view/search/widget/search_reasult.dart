@@ -7,8 +7,7 @@ import 'package:netflix/service/api_key.dart';
 import 'package:netflix/view/search/widget/searchtitle.dart';
 import 'package:provider/provider.dart';
 
-const imageUrl =
-    "https://akamaividz2.zee5.com/image/upload/w_231,h_347,c_scale,f_webp,q_auto:eco/resources/0-0-1z5351501/portrait/1920x7709e07d3163e0f41328bc9ecb3e0ad54e6.jpg";
+
 
 class SearchResult extends StatefulWidget {
   final String apiQuery;
@@ -36,7 +35,8 @@ class _SearchResultState extends State<SearchResult> {
         ),
         kHeight,
         Expanded(child:
-            Consumer<SearchResultProvider>(builder: (context, provider, child) {
+            Consumer<SearchResultProvider>(
+              builder: (context, provider, child) {
            Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(context, widget.apiQuery);
           return GridView.count(
               shrinkWrap: true,
