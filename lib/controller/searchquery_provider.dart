@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class UpdateQueryProvider extends ChangeNotifier {
+class SearchQueryProvider extends ChangeNotifier {
   String query = '';
 
   void updateQuery(String newQuery) {
